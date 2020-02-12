@@ -12,14 +12,13 @@ while(($line = fgets($file)) !== false) {
 	*/
 	preg_match_all("/\[(.*?)\]/", $line, $matches);
 	//loop through the strings inside all the square brackets
-	// print_r($matches);
 	if(isset($matches[1]) && !empty($matches[1])){
 		foreach ($matches[1] as $inner_string) {
 			switch(strlen($inner_string)<>4){
 				case 0:
 					/*
-					* 	if length of inner string in bracket is 4 and is of "baab" type 
-					*	go to next line and count for this line is zero
+					* if length of inner string in bracket is 4 and is of "baab" type 
+					* go to next line and count for this line is zero
 					*/
 
 					if($inner_string[0]!=$inner_string[1] && $inner_string == strrev($inner_string)){
@@ -53,14 +52,13 @@ while(($line = fgets($file)) !== false) {
 		switch(strlen($line)<>4){
 			case 0:
 				/*
-				* 	if length of line is 4 and is of "baab" type and has no brackets 
-				*	count it as one , this is a match
+				* if length of line is 4 and is of "baab" type and has no brackets 
+				* count it as one , this is a match
 				*/
 
 				if($line[0]!=$line[1] && $line == strrev($line)){
 					$supported_staranger_id_count++;
 					$continue = true;
-					// echo $line."\n";
 				}
 				break;
 			case 1:
@@ -73,7 +71,6 @@ while(($line = fgets($file)) !== false) {
 					if($substr_inner == strrev($substr_inner) && $substr_inner[0] != $substr_inner[1]){
 						$supported_staranger_id_count++;
 						$continue = true;
-						// echo $line."\n";
 						break;
 					}
 				}
@@ -103,7 +100,6 @@ while(($line = fgets($file)) !== false) {
 					if($outer_string[0]!=$outer_string[1] && $outer_string == strrev($outer_string)){
 						$supported_staranger_id_count++;
 						$continue = true;
-						// echo $line."\n";
 					}
 					break;
 				case 1:
@@ -116,7 +112,6 @@ while(($line = fgets($file)) !== false) {
 						if($substr_inner == strrev($substr_inner) && $substr_inner[0] != $substr_inner[1]){
 							$supported_staranger_id_count++;
 							$continue = true;
-							// echo $line."\n";
 							break;
 						}
 					}
