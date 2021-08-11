@@ -50,11 +50,13 @@ class StringExtractor
 
     public function count()
     {
-        $file = fopen($this->fileName, "r");
+        $linesAsArray = explode("\n", file_get_contents($this->fileName));
+
+        // $file = fopen($this->fileName, "r");
         /*
         *Read file line by line and process it
         */
-        while (($line = fgets($file)) !== false) {
+        foreach ($linesAsArray as $line) {
             $continue = false;
 
             /*
